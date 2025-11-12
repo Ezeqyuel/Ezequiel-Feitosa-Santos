@@ -1,0 +1,22 @@
+<section id="features" class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6">
+      Recursos que Impulsionam Seus Resultados
+    </h2>
+    <p class="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+      Descubra como nossa plataforma de automação de marketing digital pode transformar a maneira como você se conecta com seus clientes.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      @for (feature of features(); track feature.title) {
+        <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-2 border border-gray-200">
+          <div class="flex justify-center items-center h-20 w-20 bg-purple-100 text-purple-600 rounded-full mx-auto">
+            <i class="{{ feature.icon }} text-4xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ feature.title }}</h3>
+          <p class="text-gray-700 leading-relaxed">{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
