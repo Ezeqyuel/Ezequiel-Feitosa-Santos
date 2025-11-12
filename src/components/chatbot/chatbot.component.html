@@ -1,0 +1,70 @@
+<!-- Botão flutuante do Chatbot -->
+<div class="fixed bottom-6 right-6 z-40">
+  <button (click)="toggleChat()" 
+          class="bg-cyan-500 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center hover:bg-cyan-400 transition-transform transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900">
+    @if (!isOpen()) {
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    } @else {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    }
+  </button>
+</div>
+
+<!-- Janela do Chatbot -->
+@if (isOpen()) {
+  <div class="fixed bottom-24 right-6 w-[90vw] max-w-sm h-[70vh] max-h-[550px] bg-slate-800 rounded-lg shadow-2xl flex flex-col z-50 border border-cyan-500/20 transition-all duration-300 ease-in-out transform origin-bottom-right"
+       [class.scale-100]="isOpen()"
+       [class.opacity-100]="isOpen()">
+    <!-- Cabeçalho -->
+    <div class="bg-slate-900 p-4 rounded-t-lg flex justify-between items-center border-b border-slate-700">
+      <div>
+        <h3 class="font-bold text-white">Ezequiel Feitosa</h3>
+        <div class="flex items-center">
+          <span class="h-2 w-2 bg-green-400 rounded-full mr-2"></span>
+          <p class="text-xs text-green-400">Online</p>
+        </div>
+      </div>
+      <button (click)="toggleChat()" class="text-gray-400 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Área de Mensagens -->
+    <div #messageContainer class="flex-1 p-4 overflow-y-auto space-y-4">
+      @for (message of messages(); track $index) {
+        <div class="flex" [class.justify-end]="message.sender === 'user'" [class.justify-start]="message.sender === 'bot'">
+          <div class="max-w-[80%] p-3 rounded-lg" [class.bg-cyan-600]="message.sender === 'user'" [class.text-white]="message.sender === 'user'" [class.bg-slate-700]="message.sender === 'bot'">
+            <p class="text-sm whitespace-pre-wrap">{{ message.text }}</p>
+          </div>
+        </div>
+      }
+      @if (isLoading()) {
+        <div class="flex justify-start">
+          <div class="bg-slate-700 p-3 rounded-lg inline-flex items-center space-x-1">
+             <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse [animation-delay:-0.3s]"></span>
+             <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse [animation-delay:-0.15s]"></span>
+             <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Área de Input -->
+    <div class="p-4 border-t border-slate-700 bg-slate-800 rounded-b-lg">
+      <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" class="flex items-center space-x-2">
+        <input type="text"
+               formControlName="userInput"
+               placeholder="Digite sua mensagem..."
+               class="flex-1 bg-slate-700 border border-slate-600 rounded-full py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
+        <button type="submit" [disabled]="messageForm.invalid"
+                class="bg-cyan-500 text-slate-900 rounded-full w-10 h-10 flex items-center justify-center hover:bg-cyan-400 disabled:opacity-50 disabled:cursor-not-allowed">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+}

@@ -1,20 +1,20 @@
-<section id="demo" class="py-16 md:py-24 bg-purple-600 text-white relative">
+<section id="demo" class="py-16 md:py-24 bg-slate-800 text-white relative">
   <div class="container mx-auto px-6 text-center max-w-4xl">
     <h2 class="text-3xl md:text-5xl font-extrabold mb-6">
-      Pronto para Ver a Automação em Ação?
+      Solicite uma Demonstração e Veja a Transformação Acontecer
     </h2>
     <p class="text-lg md:text-xl mb-12 opacity-90">
       Preencha o formulário abaixo e nossa equipe entrará em contato para agendar uma demonstração personalizada do sistema Ezequiel Marketing Automation.
     </p>
 
-    <form [formGroup]="demoForm" (ngSubmit)="openConfirmationModal()" class="bg-white p-8 md:p-12 rounded-lg shadow-xl text-gray-800">
+    <form [formGroup]="demoForm" (ngSubmit)="openConfirmationModal()" class="bg-slate-900 p-8 md:p-12 rounded-lg shadow-xl text-gray-300">
       <div class="mb-6 text-left">
-        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Seu Nome:</label>
+        <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Seu Nome:</label>
         <input
           type="text"
           id="name"
           formControlName="name"
-          class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          class="shadow appearance-none border border-slate-600 bg-slate-700 rounded w-full py-3 px-4 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
           placeholder="Seu nome completo"
         >
         @if (demoForm.get('name')?.invalid && demoForm.get('name')?.touched) {
@@ -22,12 +22,12 @@
         }
       </div>
       <div class="mb-6 text-left">
-        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Seu Email:</label>
+        <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Seu Email:</label>
         <input
           type="email"
           id="email"
           formControlName="email"
-          class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          class="shadow appearance-none border border-slate-600 bg-slate-700 rounded w-full py-3 px-4 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
           placeholder="seuemail@exemplo.com"
         >
         @if (demoForm.get('email')?.invalid && demoForm.get('email')?.touched) {
@@ -40,12 +40,12 @@
         }
       </div>
       <div class="mb-6 text-left">
-        <label for="companyName" class="block text-gray-700 text-sm font-bold mb-2">Nome da Empresa:</label>
+        <label for="companyName" class="block text-gray-300 text-sm font-bold mb-2">Nome da Empresa:</label>
         <input
           type="text"
           id="companyName"
           formControlName="companyName"
-          class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          class="shadow appearance-none border border-slate-600 bg-slate-700 rounded w-full py-3 px-4 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
           placeholder="Nome da sua empresa"
         >
         @if (demoForm.get('companyName')?.invalid && demoForm.get('companyName')?.touched) {
@@ -53,12 +53,12 @@
         }
       </div>
       <div class="mb-6 text-left">
-        <label for="phoneNumber" class="block text-gray-700 text-sm font-bold mb-2">Telefone:</label>
+        <label for="phoneNumber" class="block text-gray-300 text-sm font-bold mb-2">Telefone:</label>
         <input
           type="tel"
           id="phoneNumber"
           formControlName="phoneNumber"
-          class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          class="shadow appearance-none border border-slate-600 bg-slate-700 rounded w-full py-3 px-4 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
           placeholder="(XX) XXXXX-XXXX"
         >
         @if (demoForm.get('phoneNumber')?.invalid && demoForm.get('phoneNumber')?.touched) {
@@ -71,19 +71,19 @@
         }
       </div>
       <div class="mb-8 text-left">
-        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Sua Mensagem (Opcional):</label>
+        <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Sua Mensagem (Opcional):</label>
         <textarea
           id="message"
           formControlName="message"
           rows="5"
-          class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          class="shadow appearance-none border border-slate-600 bg-slate-700 rounded w-full py-3 px-4 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
           placeholder="Gostaria de saber mais sobre..."
         ></textarea>
       </div>
       <button
         type="submit"
         [disabled]="demoForm.invalid"
-        class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+        class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Enviar Solicitação
       </button>
@@ -91,10 +91,10 @@
   </div>
 
   @if (showConfirmationModal()) {
-    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div class="bg-white p-8 rounded-lg shadow-2xl max-w-md w-full text-gray-800 text-center relative">
+    <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+      <div class="bg-slate-800 p-8 rounded-lg shadow-2xl max-w-md w-full text-white text-center relative border border-cyan-500/30">
         <h3 class="text-2xl font-bold mb-4">Confirmar Solicitação de Demonstração</h3>
-        <p class="mb-6 text-gray-700">Por favor, revise os detalhes da sua solicitação antes de confirmar.</p>
+        <p class="mb-6 text-gray-300">Por favor, revise os detalhes da sua solicitação antes de confirmar.</p>
 
         <div class="text-left mb-6 space-y-2">
           <p><strong>Nome:</strong> {{ demoForm.value.name }}</p>
@@ -109,18 +109,8 @@
         </div>
 
         <div class="flex justify-center space-x-4">
-          <button
-            (click)="confirmSubmission()"
-            class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-          >
-            Confirmar Envio
-          </button>
-          <button
-            (click)="cancelSubmission()"
-            class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-          >
-            Cancelar
-          </button>
+          <button (click)="cancelSubmission()" type="button" class="bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Cancelar</button>
+          <button (click)="confirmSubmission()" type="button" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold py-2 px-6 rounded-lg transition duration-300">Confirmar</button>
         </div>
       </div>
     </div>

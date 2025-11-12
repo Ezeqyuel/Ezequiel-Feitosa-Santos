@@ -20,7 +20,7 @@ export class CallToActionComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       companyName: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/)]], // Exemplo: (XX) XXXX-XXXX ou (XX) XXXXX-XXXX
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:\(\d{2}\)|\d{2})\s?\d{4,5}-?\d{4}$/)]], // Exemplo: (XX) XXXX-XXXX ou (XX) XXXXX-XXXX
       message: [''],
     });
   }

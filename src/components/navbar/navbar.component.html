@@ -1,0 +1,40 @@
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+  <a routerLink="/" fragment="home" (click)="closeMenu()" class="text-2xl font-bold text-cyan-400">
+    Ezequiel
+  </a>
+
+  <!-- Desktop Menu -->
+  <div class="hidden md:flex space-x-8 items-center">
+    <a routerLink="/" fragment="home" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300">Início</a>
+    <a routerLink="/" fragment="features" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300">Recursos</a>
+    <a routerLink="/" fragment="demo" class="bg-cyan-500 text-slate-900 hover:bg-cyan-400 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+      Solicitar Demo
+    </a>
+  </div>
+
+  <!-- Mobile Menu Button -->
+  <div class="md:hidden">
+    <button (click)="toggleMenu()" class="text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        @if (!isMenuOpen()) {
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        } @else {
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        }
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+@if (isMenuOpen()) {
+  <div class="md:hidden bg-slate-900/95 backdrop-blur-lg absolute top-full left-0 w-full">
+    <div class="flex flex-col items-center space-y-4 py-8">
+      <a routerLink="/" fragment="home" (click)="closeMenu()" class="text-lg text-gray-300 hover:text-cyan-400 transition-colors duration-300">Início</a>
+      <a routerLink="/" fragment="features" (click)="closeMenu()" class="text-lg text-gray-300 hover:text-cyan-400 transition-colors duration-300">Recursos</a>
+      <a routerLink="/" fragment="demo" (click)="closeMenu()" class="text-lg bg-cyan-500 text-slate-900 hover:bg-cyan-400 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+        Solicitar Demo
+      </a>
+    </div>
+  </div>
+}
